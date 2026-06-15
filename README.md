@@ -1,5 +1,10 @@
 # MAD_LIB
 
+C-library for algorithms and data structures.
+
+## Project Structure
+
+```text
 madlib/
 ├── .vscode/
 │   └── c_cpp_properties.json
@@ -19,4 +24,5 @@ madlib/
 ├── .gitignore
 ├── Makefile
 ├── README.md
-├── main.c
+└── main.c
+```
