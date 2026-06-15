@@ -1,1 +1,22 @@
 # MAD_LIB
+
+madlib/
+├── .vscode/
+│   └── c_cpp_properties.json
+├── include/
+│   ├── alg/
+│   │   ├── search.h
+│   │   └── sort.h
+│   ├── data/
+│   │   └── dyn_arr.h
+│   └── mad_config.h
+├── src/
+│   ├── alg/
+│   │   ├── search.c
+│   │   └── sort.c
+│   └── data/
+│       └── dyn_arr.c
+├── .gitignore
+├── Makefile
+├── README.md
+├── main.c
