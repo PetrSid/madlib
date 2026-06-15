@@ -6,8 +6,6 @@ C-library for algorithms and data structures.
 
 ```text
 madlib/
-├── .vscode/
-│   └── c_cpp_properties.json
 ├── include/
 │   ├── alg/
 │   │   ├── search.h
@@ -24,5 +22,4 @@ madlib/
 ├── .gitignore
 ├── Makefile
 ├── README.md
-└── main.c
 ```
