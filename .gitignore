@@ -1,4 +1,9 @@
+# Folders to not commit
 .vscode
+build
+
+
+
 
 *.txt
 *.exe

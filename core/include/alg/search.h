@@ -1,6 +1,8 @@
 #ifndef SEARCH_ALG_H_
 #define SEARCH_ALG_H_
 
+#include "../mad_config.h"
+
 #include <stdint.h>
 
 // ============================================================================

@@ -32,6 +32,7 @@ struct dyn_arr* darr_init(const size_t count)
 
 int darr_remv(struct dyn_arr** darr) 
 {
+    // Перепроверить
     if(darr && is_darr(*darr) && (*darr)->data) {
         free((*darr)->data);
         free(*darr);
@@ -45,11 +46,11 @@ static bool darr_realloc(struct dyn_arr* darr, const size_t capacity)
 {
     int* tmp = (int*)realloc(darr->data, capacity * sizeof(int));
     if(!tmp) {
-        fprintf(stderr, "Error: Invalid resize parameters.\n");
+        LOG_ERR("Error: Invalid resize parameters.\n");
         return false;
     }
 
-    darr->data = tmp;
+    darr->data      = tmp;
     darr->capacity  = capacity;
 
     return true;
@@ -59,7 +60,7 @@ int darr_resize(struct dyn_arr* darr, const size_t _newSize)
 {
     if(!is_darr(darr) || _newSize > LIMITED)
     {
-        fprintf(stderr, "error:\n");
+        LOG_ERR("error:\n");
         return ERR_NULL;
     }
     if(_newSize == darr->size) { 
@@ -69,7 +70,7 @@ int darr_resize(struct dyn_arr* darr, const size_t _newSize)
     {
         if(!darr_realloc(darr, _newSize))  
         {
-            fprintf(stderr, "error:\n");
+            LOG_ERR("error:\n");
             return ERR_NULL;
         }
     }
@@ -81,7 +82,7 @@ int darr_resize(struct dyn_arr* darr, const size_t _newSize)
 int darr_clear(struct dyn_arr* darr)
 {
     if(is_empty(darr)){
-        fprintf(stderr, "Warning: Attempt to clear an empty or invalid array.\n");
+        LOG_ERR("Warning: Attempt to clear an empty or invalid array.\n");
         return ERR_NULL;
     }
     for (size_t i = 0; i < darr->size; i++) {
@@ -113,18 +114,18 @@ int darr_get(const struct dyn_arr* darr, const size_t index)
     return darr->data[index];
 }
 
-
+//
 int darr_push_front(struct dyn_arr* darr, const int value)
 {
     if(!is_darr(darr)){
-        perror("error:\n");
+        LOG_ERR("error:\n");
         return ERR_NULL;
     }
     if(is_full(darr))
     {
         if(!darr_realloc(darr, darr->capacity * GROWTH_FACTOR)) 
         {
-            printf("error:\n");
+            LOG_ERR("error:\n");
             return ERR_NULL;
         }   
     }
@@ -144,7 +145,7 @@ int darr_push_back(struct dyn_arr* darr, const int value)
 {
     if(!is_darr(darr))
     {
-        fprintf(stderr, "Error: Array pointer is NULL.\n");
+        LOG_ERR("Error: Array pointer is NULL.\n");
         return ERR_NULL;
     }
     if(is_full(darr))

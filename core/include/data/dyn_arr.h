@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "mad_config.h"
+#include "../mad_config.h"
 
 #define GROWTH_FACTOR 2
 

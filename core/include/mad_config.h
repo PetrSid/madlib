@@ -18,15 +18,21 @@
     #define LIMITED     1000000000ULL
 #endif // End_Block
 
-///ERROR///
+
+
+///ERROR LOGS///
 #ifdef DEBUG
     #define LOG_ERR(msg) fprintf(stderr, "[Error]: %s\n", msg);
 #else
     #define LOG_ERR(msg)
 #endif
 
+
+#define VALIDATE_ARRAY_ARGS(ptr, sz)
+
 typedef enum {
     SUCCESS           = 0,
+    
     ERR_NULL          = -1,
     ERR_MEMORY        = -5,
     ERR_LIMIT         = -10,
