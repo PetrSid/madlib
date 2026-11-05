@@ -5,30 +5,30 @@
 
 #include "../mad_config.h"
 
-struct linked_list // linked_list
+struct linked_list         // main structure 
 {
-    struct Node
+    struct Node            // node with fields data & ptr to next, prev
     {
-        int data; //
+        int data;
 
-        struct Node* next; //
-        struct Node* prev; //
+        struct Node* next; // pointer to next node
+        struct Node* prev; // pointer to prev node
     };
-    struct Node* head; //
-    struct Node* tail; //
+    struct Node* head;     // Head linked list
+    struct Node* tail;     // tail linked list
 };
 
 
 /* TEST METODES */
-struct linked_list* init(int);   //
-int remv(struct linked_list**); //
+struct linked_list* list_init(int);            // initizlyzetion memory for linked list
+int list_remv(struct linked_list**);           // removing linked list
 
-int insert_at(size_t num); //
+int list_insert_at(size_t);                    // insert new node at 
 
-int push_front(struct linked_list*, int); //
-int push_back(struct linked_list*, int);  //
+int list_push_front(struct linked_list*, int); // push new node at front
+int list_push_back(struct linked_list*, int);  // push new node at back
 
-int pop_front(); //
-int pop_back(); //
+int list_pop_front();                          // remove node in front
+int list_pop_back();                           // remove node in back
 
 #endif //!DOUBLE_LINKED_LIST

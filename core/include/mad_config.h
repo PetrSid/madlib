@@ -22,6 +22,8 @@
 
 ///ERROR LOGS///
 #ifdef DEBUG
+    #include <stdio.h>
+
     #define LOG_ERR(msg) fprintf(stderr, "[Error]: %s\n", msg);
 #else
     #define LOG_ERR(msg)

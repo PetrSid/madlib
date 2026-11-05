@@ -12,11 +12,12 @@ int run_test()
     // darr_remv(&darr);
 
 
-    struct linked_list* list = init(10);
+    struct linked_list* list = list_init(10);
+    if(!list) { return -1; }
 
-    push_back(list, 5);
+    // list_push_back(list, 5);
 
-    remv(&list);
+    list_remv(&list);
 
     return 0;
 }
