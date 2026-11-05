@@ -50,11 +50,32 @@ int list_remv(struct linked_list** tmp_list)
 }
 
 
-// new_branch
 
-int list_insert_at(size_t)
+int list_insert_at(size_t) {}
 
-int list_push_front(struct linked_list*, int) {}
+int list_push_front(struct linked_list* list, int val) 
+{
+    // Во первых есть ли список
+    if (!list) {
+        LOG_ERR("Error: Calling a method on a null pointer"); // 
+        return -1;
+    }
+
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    if(!newNode) {   
+        LOG_ERR("Error: allocation memory"); // 
+        return -1;
+    }
+    list->head->prev = newNode;
+    newNode->next    = list->head;
+
+    list->head = newNode;
+
+    newNode->data = val;
+    newNode->prev = NULL;
+
+    return 0;
+}
 int list_push_back(struct linked_list*, int) {}
 
 int list_pop_front() {}
