@@ -55,27 +55,40 @@ int list_insert_at(size_t) {}
 
 int list_push_front(struct linked_list* list, int val) 
 {
-    // Во первых есть ли список
+    // Check if the list pointer is valid
     if (!list) {
-        LOG_ERR("Error: Calling a method on a null pointer"); // 
+        LOG_ERR("Error: Calling a method on a null pointer"); 
         return -1;
     }
 
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    if(!newNode) {   
-        LOG_ERR("Error: allocation memory"); // 
+    // Allocate memory for the new node and verify success
+    struct Node* newNode = (struct Node*)malloc(sizeof(sizeof(struct Node)));
+    if (!newNode) {   
+        LOG_ERR("Error: allocation memory"); 
         return -1;
     }
-    list->head->prev = newNode;
-    newNode->next    = list->head;
 
-    list->head = newNode;
-
+    // Initialize the new node
     newNode->data = val;
     newNode->prev = NULL;
 
+    if (!list->head) // Handle the case of an empty list
+    {
+        newNode->next = NULL;
+    }
+    else 
+    {
+        // Link the existing head to the new node
+        list->head->prev = newNode;
+        newNode->next    = list->head;
+    }
+
+    // Update the head pointer of the list
+    list->head = newNode;
+
     return 0;
 }
+
 int list_push_back(struct linked_list*, int) {}
 
 int list_pop_front() {}
