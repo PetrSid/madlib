@@ -51,20 +51,20 @@ int list_remv(struct linked_list** tmp_list)
 
 
 
-int list_insert_at(size_t) {}
+// int list_insert_at(size_t) {}
 
-int list_push_front(struct linked_list* list, int val) 
+int list_push_front(struct linked_list* list, int val)
 {
     // Check if the list pointer is valid
     if (!list) {
-        LOG_ERR("Error: Calling a method on a null pointer"); 
+        LOG_ERR("Calling a method on a null pointer");
         return -1;
     }
 
     // Allocate memory for the new node and verify success
-    struct Node* newNode = (struct Node*)malloc(sizeof(sizeof(struct Node)));
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     if (!newNode) {   
-        LOG_ERR("Error: allocation memory"); 
+        LOG_ERR("allocation memory"); 
         return -1;
     }
 
@@ -75,6 +75,7 @@ int list_push_front(struct linked_list* list, int val)
     if (!list->head) // Handle the case of an empty list
     {
         newNode->next = NULL;
+        list->tail = newNode;
     }
     else 
     {
@@ -89,7 +90,7 @@ int list_push_front(struct linked_list* list, int val)
     return 0;
 }
 
-int list_push_back(struct linked_list*, int) {}
+// int list_push_back(struct linked_list*, int) {}
 
-int list_pop_front() {}
-int list_pop_back() {}
+// int list_pop_front() {}
+// int list_pop_back() {}
