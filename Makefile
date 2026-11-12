@@ -8,7 +8,7 @@ CFLAGS  = -Wall -Wextra -Icore/include -O0 -g
 # tests/main.c core/src/data/dl_list.c
 
 SRC     = tests/main.c core/src/data/dl_list.c
-TARGET  = build/mlib
+TARGET  = build/tests
 
 
 all: $(TARGET)

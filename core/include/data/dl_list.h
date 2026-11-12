@@ -20,15 +20,15 @@ struct linked_list         // main structure
 
 
 /* TEST METODES */
-struct linked_list* list_init(int);            // initizlyzetion memory for linked list
-int list_remv(struct linked_list**);           // removing linked list
+struct linked_list* list_init(int);                   // initizlyzetion memory for linked list
+int list_remv(struct linked_list**);                  // removing linked list
 
-int list_insert_at(size_t);                    // insert new node at 
+int list_insert_at(struct linked_list*, size_t, int); // insert new node at 
 
-int list_push_front(struct linked_list*, int); // push new node at front
-int list_push_back(struct linked_list*, int);  // push new node at back
+int list_push_front(struct linked_list*, int);        // push new node at front
+int list_push_back(struct linked_list*, int);         // push new node at back
 
-int list_pop_front();                          // remove node in front
-int list_pop_back();                           // remove node in back
+int list_pop_front(struct linked_list* list);         // remove node in front
+int list_pop_back(struct linked_list* list);          // remove node in back
 
 #endif //!DOUBLE_LINKED_LIST

@@ -1,36 +1,48 @@
 // #include "test.h"
 
+#include <assert.h>
+#include <stdlib.h>
 #include "data.h"
 
 
-int run_test()
+void run_test()
 {
-    // struct dyn_arr* darr = darr_init(10);
+    // Случаи
+    /* Списка Нет */
+    assert(list_push_front(NULL, 5) == -1);
 
-    // if(!darr) { return -1; }
-
-    // darr_remv(&darr);
-
-
+    /*  Список есть нод нет   */
     struct linked_list* list = list_init(10);
-    if(!list) { return -1; }
+    // if(!list) { return -1; }
 
-    // list_push_back(list, 5);
-
+    free(list->head);
+    list->head = NULL;
+    // Проверка
+    assert(list_push_front(list, 1) == 0);
+    assert(list_push_front(list, 2) == 0);
+    //
     list_remv(&list);
 
-    return 0;
+    /*  Список есть нода одна   */
+    struct linked_list* list2 = list_init(10);
+    // if(!list2) { return -1; }
+
+    assert(list_push_front(list2, 7) == 0);
+
+
+    /*  Список есть Нод несколько   */
+    assert(list_push_front(list2, 7) == 0);
+    assert(list_push_front(list2, 10) == 0);
+    assert(list_push_front(list2, 2) == 0);
+
+
+    list_remv(&list2);
 }
 
 
 int main()
 {
-    int err = run_test();
-    if(err == -1)
-    {
-        return -1;
-    }
-
+    run_test();
 
     // run_tests_main();
     return 0;

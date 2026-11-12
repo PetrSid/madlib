@@ -49,9 +49,25 @@ int list_remv(struct linked_list** tmp_list)
     return 0;
 }
 
+int list_insert_at(struct linked_list* list, size_t count, int val) 
+{
+    // Check if the list pointer is valid
+    if (!list || !list->head) {
+        LOG_ERR("Calling a method on a null pointer OR list is empty");
+        return -1;
+    }
 
+    struct Node* tmp = list->head;
 
-// int list_insert_at(size_t) {}
+    size_t idx = 0;
+    while (idx != count) {
+        tmp = tmp->next;
+        idx++;
+    }
+
+    // Дошли до Count
+    return 0;
+}
 
 int list_push_front(struct linked_list* list, int val)
 {
@@ -90,7 +106,89 @@ int list_push_front(struct linked_list* list, int val)
     return 0;
 }
 
-// int list_push_back(struct linked_list*, int) {}
+int list_push_back(struct linked_list* list, int val) 
+{
+    // Check if the list pointer is valid
+    if (!list) {
+        LOG_ERR("Calling a method on a null pointer");
+        return -1;
+    }
 
-// int list_pop_front() {}
-// int list_pop_back() {}
+    // Allocate memory for the new node and verify success
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    if (!newNode) {   
+        LOG_ERR("allocation memory"); 
+        return -1;
+    }
+
+    // Initialize the new node
+    newNode->data = val;
+    newNode->next = NULL;
+
+    if (!list->head) // Handle the case of an empty list
+    {
+        newNode->prev = NULL;
+        list->head = newNode;
+    }
+    else 
+    {
+        // Link the existing head to the new node
+        list->tail->next = newNode;
+        newNode->prev    = list->tail;
+    }
+
+    // Update the head pointer of the list
+    list->tail = newNode;
+
+    return 0;
+}
+
+int list_pop_front(struct linked_list* list)
+{
+    // Check if the list pointer is valid
+    if (!list || !list->head) {
+        LOG_ERR("Calling a method on a null pointer OR list is empty");
+        return -1;
+    }
+
+    struct Node* tmp = list->head;
+
+    if(!list->head->next)
+    {
+        list->head = NULL;
+        list->tail = NULL;
+    }
+    else
+    {
+        list->head       = list->head->next;
+        list->head->prev = NULL;
+    }
+
+    free(tmp);
+    tmp = NULL;
+}
+
+int list_pop_back(struct linked_list* list) 
+{
+    // Check if the list pointer is valid
+    if (!list || !list->head) {
+        LOG_ERR("Calling a method on a null pointer OR list is empty");
+        return -1;
+    }
+
+    struct Node* tmp = list->tail;
+
+    if(!list->tail->prev)
+    {
+        list->head = NULL;
+        list->tail = NULL;
+    }
+    else
+    {
+        list->tail       = list->tail->prev;
+        list->tail->next = NULL;
+    }
+
+    free(tmp);
+    tmp = NULL;
+}
